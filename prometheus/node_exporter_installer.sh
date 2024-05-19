@@ -46,7 +46,7 @@ echo -e "\n---开始新增配置---"
 mkdir -p $CONFIG_DIR
 chown -R node_exporter:node_exporter $CONFIG_DIR
 touch $CONFIG_DIR/config.yml
-cat <<EOF | sudo tee $CONFIG_DIR/config.yml
+cat <<EOF | tee $CONFIG_DIR/config.yml
 tls_server_config:
   cert_file: $CERT_FILE
   key_file: $CERT_KEY_FILE
@@ -72,7 +72,7 @@ chown node_exporter:node_exporter $CERT_KEY_FILE
 
 # 创建或更新服务文件
 echo -e "\n---开始设置服务---"
-cat <<EOF | sudo tee $SERVICE_FILE
+cat <<EOF | tee $SERVICE_FILE
 [Unit]
 Description=Node Exporter
 Wants=network-online.target
@@ -91,9 +91,9 @@ EOF
 
 # 重新加载systemd，启动并启用node_exporter服务
 echo -e "\n---开始启动服务---"
-sudo systemctl daemon-reload
-sudo systemctl start node_exporter
-sudo systemctl enable node_exporter
+systemctl daemon-reload
+systemctl start node_exporter
+systemctl enable node_exporter
 
 
 # 检测服务状态
@@ -102,4 +102,4 @@ echo -e "\n---监控服务状态---"
 echo "listening ports:\n"
 netstat -tunlp | grep $PORT
 echo "service status:\n"
-sudo systemctl status node_exporter
+systemctl status node_exporter
