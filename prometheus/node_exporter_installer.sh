@@ -1,7 +1,20 @@
 #!/bin/bash
+###
+ # @Author: Ray zai7lou@outlook.com
+ # @Date: 2024-05-19 12:34:11
+ # @LastEditors: Ray zai7lou@outlook.com
+ # @LastEditTime: 2024-05-19 13:22:55
+ # @FilePath: \ray-sh\prometheus\node_exporter_installer.sh
+ # @Description: 
+ # 
+ # Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+### 
+
 set -e
 set -u
 set -o pipefail
+
+echo "version: 2024-05-19T13:21:52"
 
 # 自定义变量，需要修改
 DOWNLOADURL="https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz"
