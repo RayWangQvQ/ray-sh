@@ -3,7 +3,7 @@
  # @Author: Ray zai7lou@outlook.com
  # @Date: 2024-05-19 12:34:11
  # @LastEditors: Ray zai7lou@outlook.com
- # @LastEditTime: 2024-05-19 13:22:55
+ # @LastEditTime: 2024-05-19 13:26:13
  # @FilePath: \ray-sh\prometheus\node_exporter_installer.sh
  # @Description: 
  # 
@@ -14,7 +14,7 @@ set -e
 set -u
 set -o pipefail
 
-echo "version: 2024-05-19T13:21:52"
+echo "version: 2024-05-19T13:26:13"
 
 # 自定义变量，需要修改
 DOWNLOADURL="https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz"
@@ -24,12 +24,12 @@ PORT=""
 USER_NAME=""
 USER_PWD=""
 
+# 用户输入
 read -p "请输入cert file全路径(如/etc/letsencrypt/live/test.com/fullchain.pem):" CERT_FILE
 read -p "请输入cert key file全路径(如/etc/letsencrypt/live/test.com/privkey.pem):" CERT_KEY_FILE
 read -p "请输入端口号(如9100):" PORT
 read -p "请输入用户名(如ray):" USER_NAME
 read -p "请输入bcrypt后的密码，在线网站（https://bfotool.com/zh/bcrypt-hash-generator），10 rounds(如\$2y\$05\$ssakquqAoyrQRAz1dx5ZsOJrirdCJ1SHI7W6a9zyVx4yMWRmGa3MW):" USER_PWD
-USER_PWD="${USER_PWD//\$/\\$}"
 
 
 # 定义服务文件路径和配置文件目录
@@ -113,6 +113,6 @@ systemctl enable node_exporter
 sleep 3s
 echo -e "\n---监控服务状态---"
 echo "listening ports:\n"
-netstat -tunlp | grep $PORT
+netstat -tunlp | grep $PORT || ss -tunlp | grep $PORT || echo "请自行检查端口监听情况"
 echo "service status:\n"
 systemctl status node_exporter
