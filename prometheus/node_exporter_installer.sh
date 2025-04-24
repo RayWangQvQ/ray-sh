@@ -1,13 +1,10 @@
 #!/bin/bash
 ###
- # @Author: Ray zai7lou@outlook.com
+ # @Author: Ray
  # @Date: 2024-05-19 12:34:11
- # @LastEditors: Gemini
+ # @LastEditors: Ray
  # @LastEditTime: 2025-04-25
- # @FilePath: ./node_exporter_manager.sh
  # @Description: Manages Node Exporter - install, uninstall, status check, and configuration.
- #
- # Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
 ###
 
 set -e
