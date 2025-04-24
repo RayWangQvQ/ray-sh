@@ -14,9 +14,12 @@ set -e
 set -u
 set -o pipefail
 
+NODE_EXPORTER_VERSION="1.9.1" # Specify the desired Node Exporter version
+SCRIPT_VERSION="2025-04-24" # Version of this script
+
 # Display ultra cool Ray Node logo
 echo ""
-echo -e "\033[38;5;51m██████╗  \033[38;5;45m █████╗ \033[38;5;39m██╗   ██╗\033[38;5;33m    \033[38;5;27m███╗   ██╗\033[38;5;21m ██████╗ \033[38;5;57m██████╗ \033[38;5;93m███████╗"
+echo -e "\033[38;5;51m██████╗ \033[38;5;45m █████╗ \033[38;5;39m██╗   ██╗\033[38;5;33m    \033[38;5;27m███╗   ██╗\033[38;5;21m ██████╗ \033[38;5;57m██████╗ \033[38;5;93m███████╗"
 echo -e "\033[38;5;51m██╔══██╗\033[38;5;45m██╔══██╗\033[38;5;39m╚██╗ ██╔╝\033[38;5;33m    \033[38;5;27m████╗  ██║\033[38;5;21m██╔═══██╗\033[38;5;57m██╔══██╗\033[38;5;93m██╔════╝"
 echo -e "\033[38;5;51m██████╔╝\033[38;5;45m███████║\033[38;5;39m ╚████╔╝ \033[38;5;33m    \033[38;5;27m██╔██╗ ██║\033[38;5;21m██║   ██║\033[38;5;57m██║  ██║\033[38;5;93m█████╗  "
 echo -e "\033[38;5;51m██╔══██╗\033[38;5;45m██╔══██║\033[38;5;39m  ╚██╔╝  \033[38;5;33m    \033[38;5;27m██║╚██╗██║\033[38;5;21m██║   ██║\033[38;5;57m██║  ██║\033[38;5;93m██╔══╝  "
@@ -24,16 +27,16 @@ echo -e "\033[38;5;51m██║  ██║\033[38;5;45m██║  ██║\033[
 echo -e "\033[38;5;51m╚═╝  ╚═╝\033[38;5;45m╚═╝  ╚═╝\033[38;5;39m   ╚═╝   \033[38;5;33m    \033[38;5;27m╚═╝  ╚═══╝\033[38;5;21m ╚═════╝ \033[38;5;57m╚═════╝ \033[38;5;93m╚══════╝"
 echo ""
 echo -e "\033[38;5;208m════════════════════════════════════════════════════════════════════\033[0m"
-echo -e "\033[1m\033[38;5;226m        » Performance Monitoring Revolution «        \033[0m"
+echo -e "\033[1m\033[38;5;226m        » Node Exporter Installer «        \033[0m"
 sleep 0.5
-echo -e "\033[1m\033[38;5;118m        » v${NODE_EXPORTER_VERSION} Node Exporter Installer «         \033[0m"
+echo -e "\033[1m\033[38;5;118m        » Installer Version: $SCRIPT_VERSION «         \033[0m"
+echo -e "\033[1m\033[38;5;118m        » Node Exporter Version: v${NODE_EXPORTER_VERSION}  «         \033[0m"
 echo -e "\033[38;5;208m════════════════════════════════════════════════════════════════════\033[0m"
 echo ""
 
-echo "Installer version: 2025-04-24 (Auto OS/Arch Detection)"
+echo "Installer version: $SCRIPT_VERSION"
 
 # --- Configuration ---
-NODE_EXPORTER_VERSION="1.9.1" # Specify the desired Node Exporter version
 BASE_DOWNLOAD_URL="https://github.com/prometheus/node_exporter/releases/download"
 
 # Variables to be filled by user input
