@@ -1,6 +1,6 @@
 # Prometheus
 
-## Node Exporter
+## Node Exporter Manager
 
 ```
 bash <(curl -sSL https://raw.githubusercontent.com/RayWangQvQ/ray-sh/main/prometheus/node_exporter_installer.sh)
@@ -28,6 +28,6 @@ Features:
 
 ```
 
-## Blackbox Exporter
+## Blackbox Exporter Manager
 
 todo
