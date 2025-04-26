@@ -595,6 +595,10 @@ LOG_FILE="$LOG_FILE"
 
 # 函数：启动服务
 start() {
+    # 确保PID目录存在
+    mkdir -p "\$(dirname "\$PID_FILE")" 2>/dev/null
+    mkdir -p "\$(dirname "\$LOG_FILE")" 2>/dev/null
+    
     if [ -f "\$PID_FILE" ]; then
         PID=\$(cat "\$PID_FILE")
         if ps -p \$PID > /dev/null 2>&1; then
@@ -688,10 +692,17 @@ EOF
 
     # Clean up
     echo -e "\n${YELLOW}--- 清理临时文件 ---${NC}"
+    # 在删除前先切换到安全的工作目录
+    cd "$HOME"
     rm -rf "$TMP_DIR"
+
+    # 确保 PID 和 LOG 目录存在
+    mkdir -p "$(dirname "$PID_FILE")"
+    mkdir -p "$(dirname "$LOG_FILE")"
 
     # Start the service
     echo -e "\n${YELLOW}--- 启动 Node Exporter 服务 ---${NC}"
+    # 使用完整路径执行服务文件
     "$SERVICE_FILE" start
     
     # Check if service started successfully
