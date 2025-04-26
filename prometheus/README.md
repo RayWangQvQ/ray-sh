@@ -2,8 +2,17 @@
 
 ## Node Exporter Manager
 
+Installation:
+
 ```
 bash <(curl -sSL https://raw.githubusercontent.com/RayWangQvQ/ray-sh/main/prometheus/node_exporter_installer.sh)
+```
+
+If you are in a PAAS server like Serv00 and can not run as root, the following non-root version can be taken.
+It can run node exporter successfully without some metrics:
+
+```
+bash <(curl -sSL https://raw.githubusercontent.com/RayWangQvQ/ray-sh/main/prometheus/node_exporter_installer_non_root.sh)
 ```
 
 Features:
