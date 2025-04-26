@@ -713,7 +713,7 @@ EOF
     echo -e "\n${YELLOW}--- 创建启动脚本 ---${NC}"
 
     # Base ExecStart command - REMOVED fake paths
-    EXEC_START="$BIN_PATH --web.listen-address=:$USER_PORT"
+    EXEC_START="$BIN_PATH --web.listen-address=:$USER_PORT --path.sysfs=$HOME_DIR/fake_sys --path.procfs=$HOME_DIR/fake_proc"
     # Add config file argument if it exists and was created
     if [[ -f "$CONFIG_FILE" ]]; then
         EXEC_START="$EXEC_START --web.config.file=$CONFIG_FILE"
