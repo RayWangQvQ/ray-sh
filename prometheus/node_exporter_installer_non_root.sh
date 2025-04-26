@@ -696,17 +696,17 @@ EOF
     cd "$HOME"
     rm -rf "$TMP_DIR"
 
-    # 确保 PID 和 LOG 目录存在
-    mkdir -p "$(dirname "$PID_FILE")"
-    mkdir -p "$(dirname "$LOG_FILE")"
-
     # Start the service
     echo -e "\n${YELLOW}--- 启动 Node Exporter 服务 ---${NC}"
-    # 使用完整路径执行服务文件
-    "$SERVICE_FILE" start
-    
-    # Check if service started successfully
-    if "$SERVICE_FILE" status; then
+
+    # 直接执行命令而不是调用服务文件
+    echo "启动 Node Exporter..."
+    nohup "$BIN_PATH" --web.listen-address=:$USER_PORT > "$LOG_FILE" 2>&1 &
+    echo $! > "$PID_FILE"
+    sleep 2  # 给进程一点启动时间
+
+    # 检查是否成功启动
+    if ps -p $(cat "$PID_FILE" 2>/dev/null) > /dev/null 2>&1; then
         echo -e "\n${GREEN}Node Exporter 安装成功并且已启动！${NC}"
         echo -e "${CYAN}端口: ${NC}$USER_PORT"
         if [[ -f "$CONFIG_FILE" ]]; then
