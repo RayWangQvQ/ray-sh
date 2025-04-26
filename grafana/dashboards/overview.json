@@ -73,7 +73,7 @@
         "title": "Update",
         "tooltip": "更新当前仪表板",
         "type": "link",
-        "url": "https://grafana.com/grafana/dashboards/1"
+        "url": "https://grafana.com/grafana/dashboards/23333-node-exporter-overview"
       },
       {
         "$$hashKey": "object:2301",
@@ -83,7 +83,7 @@
         "title": "GitHub",
         "tooltip": "查看更多仪表板",
         "type": "link",
-        "url": "https://github.com/RayWangQvQ/ray-sh/tree/main/prometheus"
+        "url": "https://github.com/RayWangQvQ/ray-sh/tree/main/grafana"
       },
       {
         "$$hashKey": "object:2302",
@@ -2738,6 +2738,6 @@
     "timezone": "browser",
     "title": "Node Exporter Overview",
     "uid": "9CWBz0bik",
-    "version": 141,
+    "version": 2,
     "weekStart": ""
   }
